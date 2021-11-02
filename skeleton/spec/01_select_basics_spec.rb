@@ -1,6 +1,6 @@
 require 'rspec'
 require '01_select_basics'
-
+ 
 describe 'SELECT basics' do
 
   describe 'select_population_of_germany' do
