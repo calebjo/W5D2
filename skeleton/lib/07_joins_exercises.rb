@@ -149,7 +149,23 @@ def prolific_actors
     FROM 
       actors
     WHERE
-      
+      name IN (
+        SELECT 
+          name
+        FROM 
+          castings
+        JOIN
+          actors ON castings.actor_id = actors.id 
+        WHERE
+          ord = 1
+        GROUP BY
+          name
+        HAVING
+          SUM(ord) >= 15
+      ) 
+    ORDER BY
+      name ASC;
+    SQL
 end
 
 def films_by_cast_size
